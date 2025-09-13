@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 import json
 
 
-URL = "https://www.boligportal.dk/lejligheder/horsens/130m2-4-vaer-id-4962343"
+URL = "https://www.boligportal.dk/huse/horsens/110m2-4-vaer-id-5518747"
 HEADERS = {"User-Agent": "research-bot/1.0 (+contact@example.com)"}
 TIMEOUT = 30   # timeout in seconds for HTTP requests
 

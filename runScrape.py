@@ -7,6 +7,8 @@ Created on Wed Sep  3 13:18:27 2025
 
 import re
 from urllib.parse import urlparse, urlunparse
+from scrape_boligportal2 import scrape_listing
+import pandas as pd
 
 from boligportal_collect_urls2 import get_city_listing_urls
 urls = get_city_listing_urls("Horsens", headless=False, max_pages=100)
@@ -77,4 +79,17 @@ cleaned_urls, duplicate_map = clean_and_check(urls)
 # %%
 
 
+
+# Step 2: scrape each listing
+results = []
+for i, url in enumerate(cleaned_urls, 1):
+    try:
+        data = scrape_listing(url)
+        results.append(data)
+        print(f"[{i}/{len(urls)}] scraped {url}")
+    except Exception as e:
+        print(f"[{i}/{len(urls)}] ERROR scraping {url}: {e}")
+
+# Step 3: convert to DataFrame
+df = pd.DataFrame(results)
 
