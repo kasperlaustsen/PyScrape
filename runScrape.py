@@ -9,9 +9,9 @@ import re
 from urllib.parse import urlparse, urlunparse
 from scrape_boligportal2 import scrape_listing
 import pandas as pd
-
+city = "Horsens"
 from boligportal_collect_urls2 import get_city_listing_urls
-urls = get_city_listing_urls("Horsens", headless=False, max_pages=100)
+urls = get_city_listing_urls(city, headless=False, max_pages=100)
 len(urls), urls[:5]
 
 
@@ -93,3 +93,6 @@ for i, url in enumerate(cleaned_urls, 1):
 # Step 3: convert to DataFrame
 df = pd.DataFrame(results)
 
+
+df.to_csv(f"{city}_boligportal.csv", index=False, encoding="utf-8-sig")
+print(f"\nSaved {len(df)} listings to {city}_boligportal.csv")
