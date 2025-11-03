@@ -1,0 +1,39 @@
+diff --git a/Renovation Descriptions/header.tex b/Renovation Descriptions/header.tex
+index 6f285b2..8f84d8c 100644
+--- a/Renovation Descriptions/header.tex	
++++ b/Renovation Descriptions/header.tex	
+@@ -1,5 +1,31 @@
++% --- Billeder: auto tilpas til side ---
++\usepackage{graphicx}
++\setkeys{Gin}{width=\linewidth,height=\textheight,keepaspectratio}
++
++% --- Matematik/Unicode ---
++\usepackage{unicode-math}
++\setmathfont{Latin Modern Math}
++
++% --- Header/footer ---
+ \usepackage{fancyhdr}
+-\usepackage{lastpage}
+ \pagestyle{fancy}
+-\fancyhead{}
+-\fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
++\fancyhead{}                 % tom header
++% I stedet for \fancyfoot[C]{\thepage}:
++\fancyfoot[C]{\S\thesection\ -- side \arabic{page}}
++
++% --- Sidetal per sektion: <sektion>.<side> ---
++\makeatletter
++\@addtoreset{page}{section}
++\renewcommand*{\thepage}{\thesection.\arabic{page}}
++% Undgå "duplicate destination" i PDF-bookmarks
++\providecommand*{\theHpage}{\thesection.\arabic{page}}
++\makeatother
++
++% --- Start nummerering først EFTER TOC ---
++\usepackage{etoolbox}
++\pagenumbering{gobble} % skjul sidetal i titel/TOC
++\apptocmd{\tableofcontents}{\clearpage\pagenumbering{arabic}}{}{}
++
++% --- (VALGFRIT) Ny side ved hver \section, så hver sektion starter på x.1
++% \let\oldsection\section
++% \renewcommand{\section}{\clearpage\oldsection}
