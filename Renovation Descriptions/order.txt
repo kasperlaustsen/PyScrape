@@ -1,0 +1,28 @@
+00. Repars brick wall.md
+01. Demolition of floor.md
+02. Demolition of Kitchen.md
+03. Demolition of bathroom 1.md
+04. Demolition of bathroom 2.md
+06. Cleaning #1 Rough.md
+10a. Wash and sand ceilings, wash untouched walls.md
+10b. Setup plasterboard in ceilings.md
+11a. Cleaning #2.md
+11b. Cover floor with plastic before plastering.md
+12a. Plaster all ceilings.md
+12b. Prime all walls before plastering.md
+12c. Plaster all walls.md
+13. Prime all walls and ceilings with blocking primer as last step before painting.md
+16. Paint closet and replace tabletop (room 4).md
+17. Sand and paint, door frames, windows, window sills, radiators, pipes.md
+18. Fix stairs – clean and paint vertical edges, remove old vinyl, and replace with new black vinyl.md
+19. Remove rough covering and clean up apartment.md
+20. Replace power sockets.md
+21. Painters covering again for final layer of paint.md
+22. Final layer of paint - walls and ceilings.md
+23. Remove and tear apart rest of temporary sink.md
+24. Build up floor (laminate click).md
+26. Mount skirting boards.md
+27. Acrylic sealing on all connections.md
+28. Repair any damages on walls, stains, etc. .md
+29. Final cleaning of apartment.md
+30. Clean, Prime, Plaster, Paint outer stairway.md
