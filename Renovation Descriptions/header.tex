@@ -1,39 +1,40 @@
-diff --git a/Renovation Descriptions/header.tex b/Renovation Descriptions/header.tex
-index 6f285b2..8f84d8c 100644
---- a/Renovation Descriptions/header.tex	
-+++ b/Renovation Descriptions/header.tex	
-@@ -1,5 +1,31 @@
-+% --- Billeder: auto tilpas til side ---
-+\usepackage{graphicx}
-+\setkeys{Gin}{width=\linewidth,height=\textheight,keepaspectratio}
-+
-+% --- Matematik/Unicode ---
-+\usepackage{unicode-math}
-+\setmathfont{Latin Modern Math}
-+
-+% --- Header/footer ---
- \usepackage{fancyhdr}
--\usepackage{lastpage}
- \pagestyle{fancy}
--\fancyhead{}
--\fancyfoot[C]{\thepage\ /\ \pageref{LastPage}}
-+\fancyhead{}                 % tom header
-+% I stedet for \fancyfoot[C]{\thepage}:
-+\fancyfoot[C]{\S\thesection\ -- side \arabic{page}}
-+
-+% --- Sidetal per sektion: <sektion>.<side> ---
-+\makeatletter
-+\@addtoreset{page}{section}
-+\renewcommand*{\thepage}{\thesection.\arabic{page}}
-+% Undgå "duplicate destination" i PDF-bookmarks
-+\providecommand*{\theHpage}{\thesection.\arabic{page}}
-+\makeatother
-+
-+% --- Start nummerering først EFTER TOC ---
-+\usepackage{etoolbox}
-+\pagenumbering{gobble} % skjul sidetal i titel/TOC
-+\apptocmd{\tableofcontents}{\clearpage\pagenumbering{arabic}}{}{}
-+
-+% --- (VALGFRIT) Ny side ved hver \section, så hver sektion starter på x.1
-+% \let\oldsection\section
-+% \renewcommand{\section}{\clearpage\oldsection}
+% --- Billeder: auto-tilpas og færre float-problemer ---
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,height=.92\textheight,keepaspectratio}
+\usepackage{float}
+\floatplacement{figure}{H} % placer figurer "her" som udgangspunkt
+
+% --- Matematik/Unicode (LuaLaTeX) ---
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% --- Header/footer: "side <sektion>.<side>" ---
+\usepackage{fancyhdr}
+\fancyhead{} % tom header
+\fancyfoot[C]{side \thepage}
+
+% --- Sidenummer-format og resets ---
+\makeatletter
+\@addtoreset{page}{section}                    % nulstil page når section øges
+\renewcommand*{\thepage}{\thesection.\arabic{page}} % <sektion>.<side>
+\providecommand*{\theHpage}{\thesection.\arabic{page}} % pænere PDF-ankre
+\makeatother
+
+% --- Skjul sidetal før indhold (titel/TOC) ---
+\usepackage{etoolbox}
+\pagenumbering{gobble}   % ingen sidetal indtil vi starter indhold
+\pagestyle{empty}        % ingen header/footer før indhold
+\pretocmd{\tableofcontents}{\thispagestyle{empty}}{}{} % TOC uden footer
+
+% --- Start korrekt ved første \section: ny side, slå footer til, x.1 ---
+\makeatletter
+\let\origsection\section
+\renewcommand{\section}{%
+  \clearpage                 % hver sektion starter på ny side
+  \pagestyle{fancy}          % slå footer til fra nu af
+  \pagenumbering{arabic}     % aktiver sidetal
+  \renewcommand*{\thepage}{\thesection.\arabic{page}} % genskab format
+  \setcounter{page}{1}       % første side i sektionen = x.1
+  \origsection
+}
+\makeatother
