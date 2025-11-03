@@ -1,0 +1,40 @@
+% --- Billeder: auto-tilpas og færre float-problemer ---
+\usepackage{graphicx}
+\setkeys{Gin}{width=\linewidth,height=.92\textheight,keepaspectratio}
+\usepackage{float}
+\floatplacement{figure}{H} % placer figurer "her" som udgangspunkt
+
+% --- Matematik/Unicode (LuaLaTeX) ---
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+% --- Header/footer: "side <sektion>.<side>" ---
+\usepackage{fancyhdr}
+\fancyhead{} % tom header
+\fancyfoot[C]{side \thepage}
+
+% --- Sidenummer-format og resets ---
+\makeatletter
+\@addtoreset{page}{section}                    % nulstil page når section øges
+\renewcommand*{\thepage}{\thesection.\arabic{page}} % <sektion>.<side>
+\providecommand*{\theHpage}{\thesection.\arabic{page}} % pænere PDF-ankre
+\makeatother
+
+% --- Skjul sidetal før indhold (titel/TOC) ---
+\usepackage{etoolbox}
+\pagenumbering{gobble}   % ingen sidetal indtil vi starter indhold
+\pagestyle{empty}        % ingen header/footer før indhold
+\pretocmd{\tableofcontents}{\thispagestyle{empty}}{}{} % TOC uden footer
+
+% --- Start korrekt ved første \section: ny side, slå footer til, x.1 ---
+\makeatletter
+\let\origsection\section
+\renewcommand{\section}{%
+  \clearpage                 % ny side pr. sektion (så det starter på x.1)
+  \pagestyle{fancy}          % slå footer til
+  \pagenumbering{arabic}     % aktiver tal
+  \setcounter{page}{1}       % <- start på 1, ikke 0
+  \renewcommand*{\thepage}{\thesection.\arabic{page}} % <sektion>.<side>
+  \origsection
+}
+\makeatother

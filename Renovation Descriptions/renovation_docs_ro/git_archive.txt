@@ -1,0 +1,1 @@
+git archive --format zip HEAD > renovation_docs.zip
