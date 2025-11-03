@@ -30,11 +30,11 @@
 \makeatletter
 \let\origsection\section
 \renewcommand{\section}{%
-  \clearpage                 % hver sektion starter på ny side
-  \pagestyle{fancy}          % slå footer til fra nu af
-  \pagenumbering{arabic}     % aktiver sidetal
-  \renewcommand*{\thepage}{\thesection.\arabic{page}} % genskab format
-  \setcounter{page}{1}       % første side i sektionen = x.1
+  \clearpage                 % ny side pr. sektion (så det starter på x.1)
+  \pagestyle{fancy}          % slå footer til
+  \pagenumbering{arabic}     % aktiver tal
+  \setcounter{page}{1}       % <- start på 1, ikke 0
+  \renewcommand*{\thepage}{\thesection.\arabic{page}} % <sektion>.<side>
   \origsection
 }
 \makeatother
