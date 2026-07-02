@@ -1,0 +1,7 @@
+$files = Get-Content .\order.txt
+pandoc $files -o Arbejdsbeskrivelser.pdf `
+  --toc --toc-depth=2 --number-sections `
+  --pdf-engine=lualatex `
+  -V mainfont="DejaVu Sans" -V monofont="DejaVu Sans Mono" `
+  -V geometry:margin=20mm -V lang=da `
+  --include-in-header=header.tex

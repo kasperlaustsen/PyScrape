@@ -74,10 +74,10 @@ if __name__ == "__main__":
         "adresse": "Sjællandsgade 106, 2., 8000, Aarhus C",
         "cpr_cvr": "180594-2645",
         "email": "kasperlaustsen@gmail.com",
-        "beloeb": "10.000",
+        "beloeb": "30.000",
         "rente": "2,0",
-        "dato_indgaaelse": "10-03-2026",
-        "dato_betaling": "10-03-2026",
+        "dato_indgaaelse": "31-03-2026",
+        "dato_betaling": "31-03-2026",
         "forfaldsdato": "01-01-2040"
     }
 
@@ -88,10 +88,10 @@ if __name__ == "__main__":
         "adresse": "Borgmester Jakob Jensens Gade 3, 3. th, 8000 Aarhus C",
         "cpr_cvr": "270296-0897",
         "email": "martin.therkildsen@gmail.com",
-        "beloeb": "10.000",
+        "beloeb": "30.000",
         "rente": "2,0",
-        "dato_indgaaelse": "10-03-2026",
-        "dato_betaling": "10-03-2026",
+        "dato_indgaaelse": "31-03-2026",
+        "dato_betaling": "31-03-2026",
         "forfaldsdato": "01-01-2040"
 	}								
     ejer_3 = {
@@ -100,10 +100,10 @@ if __name__ == "__main__":
         "adresse": "Harevænget 26, 6000 Kolding",
         "cpr_cvr": "230592-2989",
         "email": "swp235@gmail.com",
-        "beloeb": "10.000",
+        "beloeb": "30.000",
         "rente": "2,0",							
-        "dato_indgaaelse": "10-03-2026",
-        "dato_betaling": "10-03-2026",
+        "dato_indgaaelse": "31-03-2026",
+        "dato_betaling": "31-03-2026",
         "forfaldsdato": "01-01-2040"												  
 	}
     
